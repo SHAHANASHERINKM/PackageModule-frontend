@@ -1,0 +1,70 @@
+.banner-wrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  padding: 1rem 2rem;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  height:130px;
+
+  /* overlap style */
+  transform: translateY(-50%);
+  position: relative;
+  z-index: 10;
+}
+
+.premium-tag {
+  display: flex;
+  align-items: center;
+  background: #5b21b6; /* purple */
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  
+}
+
+.premium-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  stroke: white;
+}
+
+.banner-description {
+  flex: 1;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+
+
+
+
+.learners-count {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #444;
+  font-weight: 600;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+}
+
+.learners-icon {
+  stroke: #444;
+}
+
+.learners-number {
+  font-size: 1.4rem;
+}
+
+.learners-text {
+  font-size: 1.4rem;
+  color: #666;
+}

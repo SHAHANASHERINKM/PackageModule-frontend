@@ -1,0 +1,32 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f9f9f9;
+    font-size: 1.25rem; /* increased base text size */
+  }
+  
+  .main-container h1 {
+    font-size: 2rem; /* larger heading */
+    margin-bottom: 1rem;
+  }
+  
+  .main-container button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  .main-container button:hover {
+    background-color: #4338ca;
+  }
+  

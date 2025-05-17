@@ -1,0 +1,55 @@
+.input-wrap{
+  display: flex;
+    align-items: center;
+    border: 1px solid #cfcfd2;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px transparent;
+    width:30%;
+    height: 45px;
+
+}
+.input-wrap:focus-within {
+    box-shadow: 0 0 0 2px #a435f0;
+    border-color: transparent;
+  }
+.input-wrap input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    color: #2d2f31;
+    background: transparent;
+  }
+  .input:hover{
+   border-color: #a435f0;
+  }
+  .input:focus{
+   border-color: purple;
+  outline: none;
+  box-shadow: none;
+  }
+  .checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between text and checkbox */
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #7e22ce; /* optional: purple color for the checkbox */
+}
+.save-button {
+  background-color:purple; /* purple */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+}

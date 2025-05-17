@@ -1,0 +1,91 @@
+.fee-details-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+  color: #1f2937;
+  
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+.fee-summary {
+  margin-bottom: 40px;
+  font-size: 24px;
+  line-height: 1.8;
+}
+
+.fee-summary p {
+  margin: 12px 0;
+}
+
+.fee-summary strong {
+  color: #2563eb;
+}
+
+.fee-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.fee-column {
+  flex: 1 1 30%;
+  min-width: 260px;
+  font-size: 24px;
+  line-height: 1.7;
+}
+
+.fee-column h3 {
+  font-size: 1.3rem;
+  color: #0f172a;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #94a3b8;
+  padding-bottom: 5px;
+}
+
+.fee-column p {
+  margin: 8px 0;
+  color: #334155;
+}
+
+.fee-column strong {
+  color: #0ea5e9;
+}
+
+.loading,
+.error {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.2 rem;
+  color: #dc2626;
+}
+.edit-fee-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  float: right; /* Float the button to the right */
+}
+
+.edit-fee-button:hover {
+  background-color: #3e8e41;
+}
+@media (max-width: 768px) {
+  .fee-columns {
+    flex-direction: column;
+  }
+}

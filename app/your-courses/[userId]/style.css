@@ -1,0 +1,224 @@
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.your-courses-container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+/* Make the content take all available vertical space */
+.list-content {
+  flex: 1; /* ← Add this line */
+  margin-top: 50px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title{
+  padding-top: 35px;
+    padding-bottom: 35px;
+    font-size: 25px;
+    font-family: ui-rounded;
+    font-weight: 700;
+}
+
+.courses-list {
+  width: 100%;
+  max-width: 800px; /* Limit width of course list */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.course-card {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.course-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: ui-rounded;
+}
+
+.course-description {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+   display: -webkit-box;        /* Use flexbox for multiline clamp */
+  -webkit-box-orient: vertical; /* Vertical orientation */
+  -webkit-line-clamp: 2;       /* Limit to 2 lines */
+  overflow: hidden;            /* Hide the overflow */
+  text-overflow: ellipsis;     /* Show "..." */
+  max-width: 80%;             /* Fit container width */
+  word-break: break-word;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.more-details-btn {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+
+.icon-buttons {
+  display: flex;
+  gap: 16px; /* Adds space between the icons */
+  align-items: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 30px;  /* Increased icon size */
+  color: #333;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  transform: scale(1.1); /* Slight grow effect on hover */
+}
+
+/* Specific color overrides */
+.edit-btn {
+  color: #2e7d32;
+  font-size: 30px;
+}
+
+.delete-btn {
+  color: #d32f2f;
+}
+
+.share-btn {
+  color: #0288d1;
+}
+
+.publish-btn {
+  color: #6a1b9a;
+}
+
+
+.share-btn:hover {
+  background-color: #e0ffee;
+}
+.status-tag {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+
+.status-tag.published {
+  background-color: #d4f4dd;
+  color: #2e7d32;
+}
+
+.status-tag.unpublished {
+  background-color: #fdecea;
+  color: #c62828;
+}
+
+.publish-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.no-courses {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+.start-teaching-btn {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.start-teaching-btn:hover {
+  background-color: #388e3c;
+}
+.incomplete-tag {
+  margin-left: 10px;
+   background-color: #fdecea;
+  color: #c62828;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.publish-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.banner {
+  width:600px;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 1rem;
+  border: 1px solid #ffeeba;
+  border-radius: 10px;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+
+.close-banner {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #856404;
+  cursor: pointer;
+}

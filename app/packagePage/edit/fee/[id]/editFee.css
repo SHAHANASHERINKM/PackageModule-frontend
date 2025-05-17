@@ -1,0 +1,102 @@
+.feeDetails-container {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: auto; /* Full viewport height */
+  /* Optional background */
+}
+.title{
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.feeDetails-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height:fit-content;
+  font-size: 20px;
+}
+
+.feeDetails-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500; /* Adjust font weight */
+}
+
+.feeDetails-form input[type="text"],
+.feeDetails-form input[type="number"],
+.feeDetails-form select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.feeDetails-form input[type="checkbox"] {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input, textarea, select {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+.discount-inline-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.discount-inline-group label {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.error-input {
+  border-color: #dc2626; /* Red color for error */
+  background-color: #fef2f2; /* Light red background */
+}
+
+.error-message {
+  color: #dc2626; /* Red text color */
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

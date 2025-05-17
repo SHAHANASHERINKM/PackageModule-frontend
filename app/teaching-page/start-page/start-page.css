@@ -1,0 +1,64 @@
+.start-page {
+    background-image: url('/start-page-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: rgb(37, 36, 36);
+}
+
+.welcome-text {
+    font-family: ui-rounded;
+    font-size: 3.5rem;
+    font-weight: bold;
+    padding-top: 212px;
+    padding-left: 80px;
+}
+
+.caption {
+    font-family: serif;
+    font-size: 2rem;
+    padding-left: 85px;
+    /* Add any additional styling for the caption here */
+}
+.get-started-button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 15px 70px; /* Adjust vertical and horizontal padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem; /* Adjust font size */
+    margin-top: 20px; /* Add margin to place below the caption */
+    margin-left: 85px; /* Align with caption */
+    cursor: pointer;
+    border-radius: 12px;
+    border: none; /* Remove default border */
+}
+@media (max-width: 768px) {
+    .start-page {
+        width:100vw;
+        height: 100vh; /* Adjust height for smaller screens */
+        padding: 20px; /* Add some padding around the content */
+    }
+
+    .welcome-text {
+        font-size: 1.5rem; /* Reduce font size for smaller screens */
+        padding-top: 100px; /* Adjust padding for smaller screens */
+        padding-left: 15px;
+    }
+
+    .caption {
+        font-size: 1rem; /* Reduce font size for smaller screens */
+        padding-left: 15px;
+    }
+    .get-started-button {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        padding: 10px 20px;
+        margin-left: 15px; /* Align with caption on smaller screens */
+    }
+}

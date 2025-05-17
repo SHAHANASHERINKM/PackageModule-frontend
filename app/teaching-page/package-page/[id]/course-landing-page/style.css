@@ -1,0 +1,175 @@
+.component-container {
+    padding: 24px;
+     max-width: 100vw;
+    background-color: #fff;
+    height: 100%;
+  }
+  .content {
+  max-width: 100vw;
+  width: 100%;
+ 
+  
+}
+
+  
+  
+  .description{
+    padding-bottom: 20px;
+  }
+  .caption{
+    font-size: 30px;
+   
+  }
+  .ck-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+   
+    
+  }
+  
+  .ck-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+  }
+  
+  .ck-content h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+  
+  .ck-content h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.75rem 0;
+  }
+  
+  .ck-content h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  .ck-content p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .ck-content a {
+    color: #2563eb; /* nice blue shade */
+    text-decoration: underline;
+  }
+  .course-image-container {
+  margin-top: 40px;
+}
+
+.course-image-label {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.course-image-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.image-preview {
+  width: 50%;
+  height: 350px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.upload-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 50%;
+}
+
+.link {
+  color: purple;
+  text-decoration: underline;
+}
+
+.file-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.editor-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Prevent CKEditor from expanding beyond its container */
+.editor-wrapper .ck-editor {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.editor-wrapper .ck-editor__editable_inline {
+  min-height: 200px;  /* Optional: Set a readable default height */
+  overflow-x: auto;   /* Enables horizontal scroll if content is too wide */
+}
+
+
+.upload-button {
+  padding: 10px 16px;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background-color: #5e2ca5;
+}
+.error-text {
+  color: red;
+  font-size: 20px;
+}
+
+
+
+  
+  
+  
+  
+  
+  .char-count {
+    margin-left: 12px;
+    font-size: 14px;
+    color: #6a6f73;
+    flex-shrink: 0;
+  }
+  
+  .add-more {
+    background: none;
+    border: none;
+    color: #a435f0;
+    font-weight: 700;
+    margin-top: 12px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  

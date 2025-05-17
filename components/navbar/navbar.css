@@ -1,0 +1,10 @@
+/* Add this to your CSS file (e.g., navbar.css or global.css) */
+@media (max-width: 768px) {
+    .ml-20 {
+      margin-left: 0 !important; /* Remove left margin on small screens */
+    }
+  
+    .flex-grow {
+      flex-grow: 1 !important; /* Allow search bar to take up remaining space */
+    }
+  }

@@ -1,0 +1,96 @@
+.package-details-container {
+  padding: 2rem;
+  max-width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.description-html {
+  font-size: 1.1rem; /* Match the font size of other content */
+  line-height: 1.7;
+}
+
+.description-row {
+  display: flex;
+  align-items: baseline; /* Align items to the baseline */
+  margin-bottom: 0.7rem;
+}
+
+.description-row strong {
+  font-weight: bold;
+  color: #007bff;
+  margin-right: 0.5rem; /* Add some spacing between the label and content */
+}
+
+.package-title {
+  font-size: 2.5rem;
+  color: #0056b3;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.left-section,
+.right-section {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.details-section,
+.benefits-section,
+.additional-info-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-heading {
+  font-size: 1.8rem;
+  color: #0056b3;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.details-section p,
+.benefits-section p,
+.additional-info-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 0.7rem;
+}
+
+.details-section strong,
+.benefits-section strong,
+.additional-info-section strong {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Optional: Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+  }
+}

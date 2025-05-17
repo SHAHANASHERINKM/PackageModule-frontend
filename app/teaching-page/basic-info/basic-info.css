@@ -1,0 +1,149 @@
+/* Main container */
+.main-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Center horizontally */
+  }
+  
+  /* Main heading */
+  .main-heading {
+    text-align: center;
+    padding: 20px;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  /* Step container */
+  .step-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+  }
+  
+  /* Step heading */
+  .step-heading {
+    font-family: ui-rounded;
+    font-weight: bold;
+    font-size: 4rem;
+    margin-bottom: 50px;
+    color:black;
+  }
+  
+  /* Step input */
+  .step-input {
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 1500px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px; /* Add margin to the bottom */
+  }
+  .step-input:hover {
+    outline: none;
+    border-color: #900f7c; /* Change border color on focus */
+  }
+  
+  /* Step select */
+  .step-select {
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width:1200px;
+    height: 60px;
+  }
+  .step-select:hover {
+    outline: none;
+    border-color: #900f7c; /* Change border color on focus */
+  }
+  
+  /* Buttons container */
+  /* Buttons container */
+/* Buttons container */
+.buttons-container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end; /* Aligns content to the right */
+  }
+  
+  /* Default to both sides */
+  .justify-between {
+    justify-content: space-between;
+  }
+  
+  /* Align to right only */
+  .justify-end {
+    justify-content: flex-end;
+  }
+  
+  
+  
+  /* Step button */
+  .step-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: white;
+  }
+  
+  
+  /* Continue button */
+  .continue-button {
+    background-color: #5e1252;
+  }
+  
+  /* Previous button */
+  .previous-button {
+    background-color: #6c757d;
+  }
+  
+  /* Back button */
+  .back-button {
+    background-color: #28a745;
+  }
+  
+  /* Step complete */
+  .step-complete {
+    text-align: center;
+    font-size: 1.5rem;
+    color: green;
+  }
+/* Exit link */
+.exit-link {
+    position: absolute;
+    top: 115px; /* Adjust top position */
+    right: 20px;
+    font-size: 1.8rem;
+    color: #5e1252;
+    text-decoration: none;
+    z-index: 10; /* Ensure it's above other elements */
+  }
+  
+  .exit-link:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 480px) {
+    .step-heading {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+  
+    .step-button {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .exit-link {
+      top: 115px;
+      right: 10px;
+      font-size: 0.9rem;
+    }
+  }

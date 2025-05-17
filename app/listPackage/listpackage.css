@@ -1,0 +1,72 @@
+.title{
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+
+}
+.package-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .package-table th,
+  .package-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .package-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .package-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .package-table tr:hover {
+    background-color: #e2e2e2;
+  }
+  
+  .edit-btn,
+  .fee-btn {
+    margin-right: 8px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .fee-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  /* styles/ShareButton.css */
+.share-btn {
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.share-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.share-icon {
+  color: #3b82f6; /* Blue color */
+  width: 2rem;
+  height: 2rem;
+}
+.share-btn .text-gray-600 {
+  width: 1.5rem !important; /* Override FontAwesome defaults */
+  height: 1.5rem !important;
+  color: #4b5563; /* Matching your gray-600 */
+}

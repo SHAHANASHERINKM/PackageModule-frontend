@@ -1,0 +1,211 @@
+.package-sections-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color:black;
+}
+
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 7rem;
+  justify-content: center;
+  width: 100%;
+  
+}
+
+
+
+.package-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 600px; 
+  min-width: 420px;
+  
+}
+
+
+
+
+
+.package-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image-wrapper {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.free-tag {
+  background: #00c853;
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  font-weight: bold;
+  white-space: nowrap; /* Prevent it from wrapping to the next line */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 1.2rem;
+  font-size: 20px;
+}
+
+.card-title {
+  font-size: 25px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card-instructor , .card-description{
+  font-size: 0.9rem;
+  color: #938f8f;
+  font-size:24px;
+}
+
+.card-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.discounted-price {
+  color: #10b981; /* Tailwind's green-500 */
+  margin-right: 0.5rem;
+}
+
+.original-price {
+  color: #9ca3af; /* Tailwind's gray-400 */
+  text-decoration: line-through;
+}
+
+.details-btn {
+  margin-top: 1rem;
+  padding: 8px 12px;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.details-btn:hover {
+  background-color: #005fcc;
+}
+
+.label-text {
+  color: black;
+  font-weight: 500;
+}
+
+.content-text {
+  font-size: 20px;
+  color: gray;
+}
+
+.card-description-html {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  display: box; /* fallback for older implementations */
+  -webkit-line-clamp: 3;
+  line-clamp: 3; /* standard property */
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  max-height: 4.5em; /* optional, for extra safety */
+  color: #555;
+  font-size: 20px;
+  line-height: 1.5em;
+}
+
+
+.wishlist-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px; /* Increase padding for a bigger button */
+  border-radius: 50%; /* Make it round */
+  font-size: 1.5rem; /* Adjust font size to make the icon inside bigger */
+  
+}
+.card-image-wrapper .absolute {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px; /* Space between FREE tag and wishlist button */
+}
+.wishlist-btn svg {
+  font-size: 2rem; /* Adjust the size of the heart icon */
+  stroke: black; 
+ 
+ 
+  
+}
+
+
+.search-and-filter-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-bar-container {
+  width: 60%;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.filter-dropdown-container {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+
+.filter-label {
+  margin-right: 10px;
+}
+
+.filter-dropdown {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

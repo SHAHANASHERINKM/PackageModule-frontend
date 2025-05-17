@@ -1,0 +1,112 @@
+.page-container {
+  padding: 20px;
+  font-size: 18px;
+}
+.page-container p{
+  font-size: 24px;
+}
+.package-description div {
+  font-size: 24px; /* Adjust the value as needed */
+}
+
+.package-card {
+  background: #fdfdfd;
+  margin-bottom: 2rem;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.delete-button {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  float: right;
+}
+
+.package-title {
+  font-size: 37px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.publish-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.publish-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.package-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 0.75rem;
+  font-size: 1rem;
+}
+
+.package-description {
+  margin-top: 1rem;
+}
+
+.edit-button {
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.edit-button:hover {
+  background-color: #45a045;
+}
+
+.media-section {
+  margin-top: 2rem;
+}
+
+.media-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.media-item {
+  flex: 1 1 300px;
+}
+
+.media-thumbnail {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.package-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
