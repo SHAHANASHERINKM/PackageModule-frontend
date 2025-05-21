@@ -17,7 +17,7 @@ function Page() {
   
       <div className="start-page">
         <h1 className="welcome-text">Come teach with us</h1>
-        <p className='caption'>Become an instructor and change lives — including your own</p>
+        <p className='p-caption'>Become an instructor and change lives — including your own</p>
         <button className="get-started-button"  onClick={handleGetStartedClick}>Get Started</button>
       </div>
       <Footer /> {/* Render the Footer component */}

@@ -1,0 +1,116 @@
+.hover-popup {
+  position: absolute;
+  top: 0;
+  width: 500px;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 100;
+  transition: opacity 0.3s ease;
+
+  /* ✅ Ensure it stays above other content */
+  pointer-events: auto; 
+}
+
+.hover-popup.right {
+  left: 105%;
+}
+
+.hover-popup.right::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #fff transparent transparent;
+}
+
+.hover-popup.left {
+  right: 105%;
+}
+
+.hover-popup.left::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -10px;
+  border-style: solid;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.hover-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  font-family: ui-rounded;
+  margin-bottom: 12px;
+  color: #1c1d1f;
+}
+.hover-tag {
+  display: flex;              /* use flex for alignment */
+  align-items: center;
+  justify-content: center;    /* center text horizontally */
+  margin-top: 10px;
+  margin-bottom: 13px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;            /* slightly bigger font */
+  color: white;
+  width: 120px;               /* fixed width for consistency */
+  height: 35px;               /* fixed height for consistency */
+  background-color: purple;  /* default background color */
+}
+
+/* Optional if you want to differentiate colors */
+.hover-tag.free {
+  background-color: purple;   /* or your chosen purple shade */
+  color: white;
+}
+
+.hover-tag.premium {
+  background-color: purple;   /* same purple */
+  color: white;
+}
+
+.hover-subtitle {
+  margin-top: 6px;
+  font-size: 1.2rem;
+  color: #555;
+  font-family: ui-rounded, sans-serif;
+}
+.hover-learnings {
+  margin-top: 12px;
+  font-family: ui-rounded, sans-serif;
+  color: #333;
+ 
+}
+
+.hover-learnings h4 {
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.hover-learnings ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.learning-list {
+  padding-left: 20px;  /* Creates indent for bullets */
+  margin-top: 8px;
+  list-style-type: disc; /* Shows dots */
+}
+
+.learning-list li {
+  margin-bottom: 6px;
+  font-size: 18px;
+  color: #333;
+}
+
+
+

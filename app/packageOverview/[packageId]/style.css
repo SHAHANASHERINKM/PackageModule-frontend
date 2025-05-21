@@ -82,7 +82,7 @@ height: 550px;
   margin: 0;
   min-width: 0;
   overflow-wrap: break-word;
-  z-index: 999;
+  z-index: 1;
   
   transition: all 0.3s ease-in-out;
 }
@@ -107,7 +107,7 @@ height: 550px;
   line-height: 1.2;
 }
 
-.subtitle {
+.overview-subtitle {
   font-size: 30px;
   font-weight: 400;
   color: #d4d4f4;

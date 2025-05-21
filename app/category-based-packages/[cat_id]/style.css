@@ -1,0 +1,211 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.courses-wrapper {
+    width:100vw;
+    
+    
+}
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.content{
+  padding-left: 40px;
+  padding-top: 60px;
+}
+.heading{
+  font-size: 50px;
+  font-family: ui-rounded;
+  font-weight: 500;
+}
+.sub-head{
+  font-size: 30px;
+  padding-top: 10px;
+  font-weight: 400;
+  font-family: ui-rounded;
+}
+
+.dev-courses-wrapper h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.dev-courses-wrapper h3 {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+hr {
+  margin: 1rem 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.scroll-container {
+  position: relative; /* ensure absolute children can escape */
+  overflow-x: auto;   /* allow horizontal scroll */
+  overflow-y: visible; /* show vertical overflow, no vertical scroll */
+  width: 100%;
+  padding: 20px 30px;
+  height: 600px; /* increased height to fit popups comfortably */
+}
+
+.card-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: visible; /* IMPORTANT: allow popup overflow horizontally */
+  overflow-y: visible; /* IMPORTANT: allow popup overflow vertically */
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  height: 100%; /* fill container height */
+  position: relative;
+}
+
+.course-card {
+  min-width: 23%;
+  max-width: 23%;
+  flex: 0 0 auto;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  height: 480px; /* Increased height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative; /* Needed for absolute positioning inside */
+  padding-bottom: 40px
+}
+
+.course-img {
+  width: 100%;
+  aspect-ratio: 750 / 422; /* Maintains 750x422 aspect ratio */
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.course-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.scroll-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background: rgb(211, 209, 209);
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.scroll-btn.left {
+  left: 5px;
+}
+
+.scroll-btn.right {
+  right: 5px;
+}
+.course-title
+{
+font-size: 25px;
+font-weight: 600;
+font-family: ui-rounded;
+}
+.instructor{
+  font-size: 17px;
+  color: #666;
+}
+.language{
+font-size: 20px;
+}
+.card-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  margin-bottom: 30px;
+}
+
+.discounted-price {
+  color: black; /* Tailwind's green-500 */
+  margin-right: 0.5rem;
+   font-size: 1.5rem;
+}
+
+.original-price {
+  color: #9ca3af; /* Tailwind's gray-400 */
+  text-decoration: line-through;
+}
+.free-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 8px;
+  width:80px;
+  text-align: center;
+}
+
+.category-premium-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.more-details-btn {
+  position: absolute;
+  left: 100px;    /* changed from right: 10px to left: 10px */
+  bottom: 10px;
+  background-color: rgb(192, 118, 192); /* Example color */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  width:200px;
+ 
+}
+
+.more-details-btn:hover {
+  background-color: rgb(140, 57, 140);
+}
+
+

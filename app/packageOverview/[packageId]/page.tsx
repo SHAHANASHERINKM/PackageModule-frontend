@@ -27,6 +27,7 @@ interface PackageData {
     language: string;
     coverImage: string;
     videoFile: string;
+    seats:number;
   };
   intendedLearners: {
     learningObjectives: string[];
@@ -79,7 +80,7 @@ export default function PackageOverviewPage() {
               {data.courseLandingPage?.title || "No Title Available"}
             </h1>
 
-            <h1 className="subtitle">
+            <h1 className="overview-subtitle">
                {data.courseLandingPage?.subtitle || "No Subtitle Available"}
               
               

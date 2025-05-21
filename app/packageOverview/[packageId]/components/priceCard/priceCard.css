@@ -4,7 +4,8 @@
   padding: 0;
   font-family: sans-serif;
   height: auto;         /* Allow height to expand based on content */
-  overflow: hidden;  
+  overflow: hidden; 
+   
 }
 
 .thumbnail-box {
@@ -125,13 +126,26 @@
 
 .wishlist {
   width: 40px;
+  height: 40px;
   background: white;
   color: #9333ea;
   font-size: 20px;
   border: 2px solid #9333ea;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.wishlist-icon {
+  transition: color 0.3s ease;
+  color: #9333ea;
+}
+
+.wishlist-icon.active {
+  color:  #9333ea;
+}
+
 
 .buy-now {
   margin: 0 16px 16px;
@@ -143,4 +157,55 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.modal-overlay {
+  position: fixed;
+  top: 35;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(53, 51, 51, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  padding: 40px;
+    padding-top: 70px;
+    align-items: center;
+    position: relative;
+    width: 90%;
+    height: 750px;
+    max-width: 1000px;
+    background: #1a1919;
+   
+    box-shadow: 0 0 20px #0006;
+}
+
+.promo-video {
+  width: 100%;
+  height: auto;
+ 
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color:white;
+}
+.modal-heading {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.wishlist.wishlisted {
+  color: purple;
 }

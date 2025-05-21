@@ -25,7 +25,7 @@ const FeeDetailsForm = () => {
     recurring_amount: null, // For recurring fee
     number_of_months: 1, // Default value of 1 month
     first_payment: "",
-    seats:null,
+   
   });
 
   const [errors, setErrors] = useState({
@@ -34,7 +34,7 @@ const FeeDetailsForm = () => {
     recurring_amount: "",
     number_of_months: "",
     duration:"",
-    seats:"",
+    
   });
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const FeeDetailsForm = () => {
           recurring_amount: result.recurring_amount ?? null,
           number_of_months: result.number_of_months ?? 1,
           first_payment: result.first_payment?.toString() || "",
-          seats:result.seats??null,
+         
         });
 
       } catch (err) {
@@ -491,24 +491,7 @@ const FeeDetailsForm = () => {
               />
             </div>
           </div>
-        <p><strong>Limit Your Seats</strong></p>
-
-
-           <div className="flex gap-6">
-
-            <div className="w-1/3">
-              <input
-                placeholder="Enter no of seats"
-                type="seats"
-                 className=" input w-[450px] border border-gray-300 rounded-md p-2 h-[45px] focus:outline-none focus:ring-2 focus:ring-purple-600"
-               
-                name="seats"
-                value={formData.seats ?? ''}
-                onChange={handleChange}
-                
-              />
-            </div>
-            </div>
+        
 
 
 

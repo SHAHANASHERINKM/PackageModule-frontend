@@ -122,7 +122,7 @@ const handlePublish = async (packageId: number) => {
 
 
   const handleMoreDetails = (packageId: number) => {
-    router.push(`/course/${packageId}`);  // Navigate to course details page
+    router.push(`/packageOverview/${packageId}`);  // Navigate to course details page
   };
 
   return (
