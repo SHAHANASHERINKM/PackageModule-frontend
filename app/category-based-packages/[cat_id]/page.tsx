@@ -72,7 +72,7 @@ const DevelopmentCourses: React.FC = () => {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = 300;
+      const scrollAmount = 600;
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth',
@@ -117,7 +117,7 @@ const DevelopmentCourses: React.FC = () => {
 
                     <div className="card-price">
                       {course.is_free ? (
-                        <span className="free-tag">Free</span>
+                        <span className="category-free-tag">Free Tutorial</span>
                       ) : (
                         course.feeDetails && (
                           <>

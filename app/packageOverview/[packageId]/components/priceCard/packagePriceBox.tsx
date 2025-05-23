@@ -53,9 +53,13 @@ const [addedToCart, setAddedToCart] = useState(false);
 const [showJoinModal, setShowJoinModal] = useState(false);
 const [hasPurchased, setHasPurchased] = useState(false);
 const [hasPurchasedOrEnrolled, setHasPurchasedOrEnrolled] = useState(false);
+const [learnersCount, setLearnersCount] = useState<number>(0);
 
-
-
+// Calculate seats left
+const seatsLeft =
+  data && typeof data.courseLandingPage.seats === "number"
+    ? data.courseLandingPage.seats - learnersCount
+    : 0;
 
 
   useEffect(() => {
@@ -90,6 +94,24 @@ const [hasPurchasedOrEnrolled, setHasPurchasedOrEnrolled] = useState(false);
 
     fetchPackage();
   }, [packageId]);
+
+  useEffect(() => {
+  async function fetchLearnersCount() {
+    if (!packageId) return;
+    try {
+      const res = await fetch(`http://localhost:3000/package/${packageId}/learners-count`);
+      if (!res.ok) throw new Error("Failed to fetch learners count");
+      const json = await res.json();
+      // Assuming the API returns { count: number }
+      setLearnersCount(json.count ?? 0);
+    } catch (error) {
+      console.error("Error fetching learners count:", error);
+      setLearnersCount(0);
+    }
+  }
+  fetchLearnersCount();
+}, [packageId]);
+
 
   useEffect(() => {
   if (!userId || !packageId) return;
@@ -302,11 +324,17 @@ const handleBuyNow = async () => {
             )}
           </div>
 
-          {data.courseLandingPage.seats !== null && data.courseLandingPage.seats !== 0 &&  (
-            <div className="no_of_seats">
-              <p className="seats">🔥 {data.courseLandingPage.seats} Seats Left! Hurry Up!</p>
-            </div>
-          )}
+         {typeof data.courseLandingPage.seats === "number" && (
+  <div className="no_of_seats">
+    {seatsLeft > 0 ? (
+      <p className="seats">
+        🔥 {seatsLeft} Seats Left! Hurry Up!
+      </p>
+    ) : (
+      <p className="seats out-of-seats">❌ Out of Seats</p>
+    )}
+  </div>
+)}
         </div>
 
         <div className="button-group">
@@ -324,24 +352,49 @@ const handleBuyNow = async () => {
           </button>
         </div>
 
-        {hasPurchasedOrEnrolled ? (
-  <button className="buy-now" onClick={() => router.push(`/course-content-page/${packageId}`)}>
+      {hasPurchasedOrEnrolled ? (
+  <button
+    className="buy-now"
+    onClick={() => router.push(`/course-content-page/${packageId}`)}
+  >
     Go to Course
   </button>
 ) : (
-  <button className="buy-now" onClick={handleBuyNow}>
-    {data?.is_free ? "Enroll Now" : "Buy Now"}
+  <button
+    className="buy-now"
+    onClick={handleBuyNow}
+    disabled={
+      typeof data.courseLandingPage.seats === "number"
+        ? seatsLeft <= 0
+        : false
+    }
+    style={{
+      cursor:
+        typeof data.courseLandingPage.seats === "number" && seatsLeft <= 0
+          ? "not-allowed"
+          : "pointer",
+    }}
+    title={
+      typeof data.courseLandingPage.seats === "number" && seatsLeft <= 0
+        ? "No seats available"
+        : undefined
+    }
+  >
+    {typeof data.courseLandingPage.seats === "number" && seatsLeft <= 0
+      ? "Out of Seats"
+      : data?.is_free
+      ? "Enroll Now"
+      : "Buy Now"}
   </button>
 )}
-
 
 
 
       </div>
 
       {isModalOpen && (
-        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="video-modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={() => setIsModalOpen(false)}>✖</button>
             <h2 className="modal-heading">Course Preview</h2>
             <h2 className="modal-heading">{data.courseLandingPage.title}</h2>

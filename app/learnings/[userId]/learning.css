@@ -1,0 +1,116 @@
+.cart-page-container {
+  max-width: 100vw;
+  margin: 0 auto;
+  
+}
+.cart-page-content{
+    padding-left: 50px;
+
+}
+
+.cart-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: ui-rounded;
+  margin-bottom: 2rem;
+  color: #222;
+  padding-top: 50px;
+ 
+}
+.cart-empty {
+  font-size: 1.6rem;
+  color: gray;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-image {
+  width: 170px;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 1.5rem;
+}
+
+.cart-details {
+  flex: 1;
+}
+
+.cart-course-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.cart-instructor {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.card-price {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.learning-free-tag {
+ display: inline-block;
+  padding: 4px 10px;
+   background-color: #eacfcf;
+  color: #b32d0f;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 8px;
+  width:140px;
+  text-align: center;
+}
+
+.discounted-price {
+  color: #e63946;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.original-price {
+  color: #888;
+  text-decoration: line-through;
+}
+.cart-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* space between links */
+  margin-right: 80px;
+}
+
+.cart-action-link {
+  color: purple;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+  width: 200px; /* fixed width, adjust as needed */
+  user-select: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.cart-action-link:hover {
+  background-color: rgb(220, 172, 220);
+  color: white;
+  
+}

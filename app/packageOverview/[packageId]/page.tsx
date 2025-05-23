@@ -28,6 +28,7 @@ interface PackageData {
     coverImage: string;
     videoFile: string;
     seats:number;
+    
   };
   intendedLearners: {
     learningObjectives: string[];

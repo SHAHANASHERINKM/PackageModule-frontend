@@ -236,7 +236,9 @@ const CourseLandingPage = () => {
     payload.append('thumbnailImage', formData.thumbnailImage as Blob);
     payload.append('videoFile', formData.videoFile as Blob);
     payload.append('packageId', packageId);
-    payload.append('seats', formData.seats || '');
+    if (formData.seats !== '') {
+  payload.append('seats', formData.seats);
+}
 
     try {
       const res = await fetch(`http://localhost:3000/package/${packageId}/course-landing-page`, {
@@ -279,7 +281,7 @@ const CourseLandingPage = () => {
               type="text"
               id="course-title"
               placeholder="Programming"
-              maxLength={50}
+              maxLength={70}
               value={formData.title}
               onChange={(e) => handleInputChange(e, 'title')}
               required

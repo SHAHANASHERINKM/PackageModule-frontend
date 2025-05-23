@@ -19,6 +19,7 @@ interface Package {
   courseLandingPage: {
     title: string;
     description: string;
+    subtitle:string;
   }
 }
 
@@ -167,7 +168,7 @@ const handlePublish = async (packageId: number) => {
                   <div
                     className="course-description"
                     dangerouslySetInnerHTML={{
-                      __html: pkg.courseLandingPage?.description || pkg.description || '<i>No description provided</i>',
+                      __html: pkg.courseLandingPage?.subtitle|| '<i>No description provided</i>',
                     }}
                   />
 

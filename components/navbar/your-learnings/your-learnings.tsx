@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import './wishListDropdown.css';
+import './your-learnings.css';
 
 interface CartItem {
   id: number;
@@ -42,7 +42,7 @@ export default function CartDropdown({ userId }: Props) {
 
     const fetchCartItems = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/package/wish-list/${userId}`);
+        const response = await fetch(`http://localhost:3000/package/purchased/${userId}`);
         if (!response.ok) throw new Error('Failed to fetch cart items');
         const data = await response.json();
         console.log('Cart Items:', data);
@@ -62,9 +62,9 @@ export default function CartDropdown({ userId }: Props) {
 
   return (
     <div className="cart-dropdown">
-      <h4 className="cart-title">Your Wishlist</h4>
+      <h4 className="cart-title">Your Learnings</h4>
       {cartItems.length === 0 ? (
-        <p className="cart-empty">Wishlist is empty</p>
+        <p className="cart-empty">Learning list  is empty.Start learning</p>
       ) : (
         <>
         <ul className="cart-list">
@@ -145,9 +145,9 @@ export default function CartDropdown({ userId }: Props) {
         <button
           type="button"
           className="go-to-wishlist-button"
-          onClick={() => router.push(`/wishlist/${userId}`)}
+          onClick={() => router.push(`/learnings/${userId}`)}
         >
-          Go to Wishlist
+          Go to Learnings
         </button>
         </>
       )}
