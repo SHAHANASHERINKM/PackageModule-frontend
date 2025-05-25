@@ -1,59 +1,81 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import './style.css';
 import PreviewPanel from '@components/previewPanel/preview';
 import dynamic from 'next/dynamic';
+import { useDirty } from "../DirtyContext";
 
 const Editor = dynamic(() => import('@components/ckEditor/ckTextEditor'), { ssr: false });
 
 function SuccessPage() {
   const [description, setDescription] = useState('');
   const [showPreview, setShowPreview] = useState(false);
-  const [isUpdate, setIsUpdate] = useState(false); // Track if content already exists
-  const [userId, setUserId] = useState<number | null>(null); // Store userId for future use
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [userId, setUserId] = useState<number | null>(null);
 
   const router = useRouter();
   const params = useParams();
   const id = params?.id as string;
-  console.log("Package ID:", id);
 
-  // Fetch existing content on mount
+  const { isDirty, setIsDirty } = useDirty();
+
+  // This ref will help us ignore the first editor change after loading data
+  const justLoaded = useRef(false);
+
+  // Load existing message on mount
   useEffect(() => {
     const loadContent = async () => {
       if (!id) return;
       const storedUser = sessionStorage.getItem('user');
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      if (parsedUser.user_id) {
-        setUserId(Number(parsedUser.user_id));
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser.user_id) {
+          setUserId(Number(parsedUser.user_id));
+        }
       }
-    }
-   
 
       try {
-  const res = await fetch(`http://localhost:3000/package/${id}/success-message`);
-  if (!res.ok) return;
+        const res = await fetch(`http://localhost:3000/package/${id}/success-message`);
+        if (!res.ok) {
+          setIsDirty(false);
+          return;
+        }
 
-  const text = await res.text();
-  if (!text) return;
+        const text = await res.text();
+        if (!text) {
+          setIsDirty(false);
+          return;
+        }
 
-  const data = JSON.parse(text);
-  console.log(data);
+        const data = JSON.parse(text);
 
-  if (data?.pageContent?.trim().length > 0) {
-    setDescription(data.pageContent);
-    setIsUpdate(true);
-  }
-} catch (err) {
-  console.error("Failed to load existing content:", err);
-}
-
+        if (data?.pageContent?.trim().length > 0) {
+          setDescription(data.pageContent);
+          setIsUpdate(true);
+        }
+        setIsDirty(false);
+        justLoaded.current = true; // Set flag after loading data
+      } catch (err) {
+        setIsDirty(false);
+        console.error("Failed to load existing content:", err);
+      }
     };
 
     loadContent();
-  }, [id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, setIsDirty]);
+
+  // Mark as dirty on user edit, but ignore the first change after load
+  const handleEditorChange = (val: string) => {
+    setDescription(val);
+    if (justLoaded.current) {
+      justLoaded.current = false;
+      return; // Ignore the first change event after loading data
+    }
+    setIsDirty(true);
+  };
 
   const saveContent = async () => {
     try {
@@ -69,6 +91,7 @@ function SuccessPage() {
       const data = await res.json();
 
       if (res.ok) {
+        setIsDirty(false);
         alert('Content saved successfully!');
         router.push(`/teaching-page/package-page/${params.id}/intended-learners`);
       } else {
@@ -94,6 +117,7 @@ function SuccessPage() {
       const data = await res.json();
 
       if (res.ok) {
+        setIsDirty(false);
         alert('Content updated successfully!');
         router.push(`/teaching-page/package-page/${params.id}/intended-learners`);
       } else {
@@ -131,7 +155,7 @@ function SuccessPage() {
           Write messages to your students who join your course to encourage them to engage with the course content.
           Make it attractive!
         </p>
-        <Editor value={description} onChange={setDescription} />
+        <Editor value={description} onChange={handleEditorChange} />
       </div>
 
       <div className="save-container">

@@ -6,6 +6,7 @@ import Link from "next/link";
 import Navbar from "@components/navbar/navbar";
 import Footer from "@components/footer/footer";
 import "./layout.css";
+import { DirtyProvider, useDirty } from "./DirtyContext"; // <-- Import useDirty
 
 type Props = {
   children: React.ReactNode;
@@ -17,22 +18,20 @@ type Props = {
     pricing?: boolean;
     message?: boolean;
   };
-  isDataSaved: boolean;
-  setIsDataSaved: (value: boolean) => void;
 };
 
-export default function PackageLayout({
+function PackageLayoutInner({
   children,
   completedSteps = {},
-  isDataSaved,
-  setIsDataSaved,
-}: Props) {
+}: Omit<Props, "isDataSaved" | "setIsDataSaved">) {
   const [stepStatus, setStepStatus] = useState(completedSteps);
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams<{ id: string }>();
   const id = params?.id;
   const [userId, setUserId] = useState<number | null>(null);
+
+  const { isDirty } = useDirty(); // <-- Use context
 
   // Fetch userId from sessionStorage once on component mount
   useEffect(() => {
@@ -51,7 +50,7 @@ export default function PackageLayout({
   const handleNavigation = (event: React.MouseEvent, href: string) => {
     event.preventDefault();
 
-    if (!isDataSaved) {
+    if (isDirty) {
       const confirmLeave = window.confirm(
         "You may have unsaved data. Are you sure you want to leave?"
       );
@@ -65,7 +64,7 @@ export default function PackageLayout({
 
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-      if (!isDataSaved) {
+      if (isDirty) {
         event.returnValue =
           "You may have unsaved data. Are you sure you want to leave?";
       }
@@ -76,103 +75,96 @@ export default function PackageLayout({
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, [isDataSaved]);
+  }, [isDirty]);
 
- const handleFinish = async () => {
-  if (!id) {
-    alert("Package ID is missing.");
-    return;
-  }
-
-  try {
-    const res = await fetch(`http://localhost:3000/package/${id}/package`);
-    if (!res.ok) {
-      alert("Failed to fetch package details.");
-      return;
-    }
-    const data = await res.json();
-    
-
-    const missingIntendedLearners =
-      !data.intendedLearners ||
-      data.intendedLearners.length === 0 ||
-      data.intendedLearners.some((il: any) => !il.id);
-    const missingCourseLandingPage =
-      !data.courseLandingPage || !data.courseLandingPage.id;
-    const missingSuccessMessage =
-      !data.successMessage || !data.successMessage.id;
-
-    if (
-      missingIntendedLearners ||
-      missingCourseLandingPage ||
-      missingSuccessMessage
-    ) {
-      alert(
-        "You haven't completed the process. Please fill in all required sections."
-      );
+  const handleFinish = async () => {
+    if (!id) {
+      alert("Package ID is missing.");
       return;
     }
 
-    if (data.status === "published") {
-     
-    
-
-      if (userId !== null) {
-        alert("Package creation is successfully completed");
-        router.push(`/your-courses/${userId}`);
-      } else {
-        alert("User ID missing");
+    try {
+      const res = await fetch(`http://localhost:3000/package/${id}/package`);
+      if (!res.ok) {
+        alert("Failed to fetch package details.");
+        return;
       }
-      return;
-    }
+      const data = await res.json();
 
-    const confirmPublish = window.confirm(
-      "Package creation is successfully completed. Do you want to publish now?"
-    );
+      const missingIntendedLearners =
+        !data.intendedLearners ||
+        data.intendedLearners.length === 0 ||
+        data.intendedLearners.some((il: any) => !il.id);
+      const missingCourseLandingPage =
+        !data.courseLandingPage || !data.courseLandingPage.id;
+      const missingSuccessMessage =
+        !data.successMessage || !data.successMessage.id;
 
-    // Call complete_status update API before publishing or routing
-    await fetch(`http://localhost:3000/package/${id}/complete-status`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (confirmPublish) {
-      // Call the publish API
-      const publishRes = await fetch(
-        `http://localhost:3000/package/${id}/publish`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!publishRes.ok) {
-        alert("Failed to publish the package.");
+      if (
+        missingIntendedLearners ||
+        missingCourseLandingPage ||
+        missingSuccessMessage
+      ) {
+        alert(
+          "You haven't completed the process. Please fill in all required sections."
+        );
         return;
       }
 
-      alert("Package published successfully!");
-      router.push(`/your-courses/${userId}`);
-    } else {
-      alert("You can publish later.");
-      if (userId !== null) {
+      if (data.status === "published") {
+        if (userId !== null) {
+          alert("Package creation is successfully completed");
+          router.push(`/your-courses/${userId}`);
+        } else {
+          alert("User ID missing");
+        }
+        return;
+      }
+
+      const confirmPublish = window.confirm(
+        "Package creation is successfully completed. Do you want to publish now?"
+      );
+
+      // Call complete_status update API before publishing or routing
+      await fetch(`http://localhost:3000/package/${id}/complete-status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (confirmPublish) {
+        // Call the publish API
+        const publishRes = await fetch(
+          `http://localhost:3000/package/${id}/publish`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!publishRes.ok) {
+          alert("Failed to publish the package.");
+          return;
+        }
+
+        alert("Package published successfully!");
         router.push(`/your-courses/${userId}`);
       } else {
-        alert("User ID missing");
+        alert("You can publish later.");
+        if (userId !== null) {
+          router.push(`/your-courses/${userId}`);
+        } else {
+          alert("User ID missing");
+        }
       }
+    } catch (error) {
+      alert("An error occurred while fetching package details.");
+      console.error(error);
     }
-  } catch (error) {
-    alert("An error occurred while fetching package details.");
-    console.error(error);
-  }
-};
-
-
-
+  };
 
   return (
     <>
@@ -333,5 +325,14 @@ export default function PackageLayout({
 
       <Footer />
     </>
+  );
+}
+
+// Wrap the layout with DirtyProvider
+export default function PackageLayout(props: Props) {
+  return (
+    <DirtyProvider>
+      <PackageLayoutInner {...props} />
+    </DirtyProvider>
   );
 }

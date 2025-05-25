@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import './style.css';
 import { useParams, useRouter } from 'next/navigation';
+import { useDirty } from '../DirtyContext'; // <-- Import the context
 
 const Editor = dynamic(() => import('@components/ckTextEditor/ckTextEditor'), { ssr: false });
 
@@ -57,7 +58,10 @@ const CourseLandingPage = () => {
     videoFile: null as string | null,
   });
 
-  const [isDirty, setIsDirty] = useState(false);
+  // REMOVE local isDirty state, use context instead:
+  // const [isDirty, setIsDirty] = useState(false);
+  const { isDirty, setIsDirty } = useDirty(); // <-- Use context
+
   const [isSaved, setIsSaved] = useState(false);
 
   const coverImageInputRef = useRef<HTMLInputElement>(null);
@@ -75,6 +79,7 @@ const CourseLandingPage = () => {
         if (!res.ok) {
           console.warn('No existing course landing page data found.');
           setIsDataLoaded(false);
+          setIsDirty(false); // Mark as clean on initial load
           return;
         }
 
@@ -96,12 +101,14 @@ const CourseLandingPage = () => {
         setDescription(data.description || '');
 
         setIsDataLoaded(true);
+        setIsDirty(false); // Mark as clean after data load
         console.log('Fetched Data:', data);
 
         if (data.coverImage) setPreviewUrl(data.coverImage);
         if (data.thumbnailImage) setThumbnailPreviewUrl(data.thumbnailImage);
         if (data.videoFile) setVideoPreviewUrl(data.videoFile);
       } catch (error) {
+        setIsDirty(false); // Mark as clean on error
         console.error('Failed to fetch course landing page data:', error);
       }
     };
@@ -109,7 +116,7 @@ const CourseLandingPage = () => {
     if (packageId) {
       fetchCourseLandingData();
     }
-  }, [packageId]);
+  }, [packageId, setIsDirty]);
 
   const validateField = (name: string, value: string | File | null) => {
     const message = `${name.replace(/Image|File/, '')} is required.`;
@@ -223,7 +230,7 @@ const CourseLandingPage = () => {
     }
 
     setIsSaved(true);
-    setIsDirty(false);
+    setIsDirty(false); // Mark as clean after save
 
     const payload = new FormData();
     payload.append('title', formData.title);
@@ -237,8 +244,8 @@ const CourseLandingPage = () => {
     payload.append('videoFile', formData.videoFile as Blob);
     payload.append('packageId', packageId);
     if (formData.seats !== '') {
-  payload.append('seats', formData.seats);
-}
+      payload.append('seats', formData.seats);
+    }
 
     try {
       const res = await fetch(`http://localhost:3000/package/${packageId}/course-landing-page`, {

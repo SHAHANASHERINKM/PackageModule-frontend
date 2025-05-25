@@ -2,21 +2,22 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import './intended-learners.css';
+import { useDirty } from "../DirtyContext"; // <-- Import the context
 
 type Props = {
   setStepStatus?: (cb: (prev: any) => any) => void;
-  setIsDataSaved?: (val: boolean) => void;
 };
 
-export default function IntendedLearners({ setStepStatus, setIsDataSaved }: Props) {
+export default function IntendedLearners({ setStepStatus }: Props) {
   const [learningObjectives, setLearningObjectives] = useState(["", "", "", ""]);
   const [requirements, setRequirements] = useState([""]);
   const [audience, setAudience] = useState([""]);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const [isDataSavedLocal, setIsDataSavedLocal] = useState(false);
   const params = useParams();
   const packageId = params?.id;
   const router = useRouter();
+
+  const { isDirty, setIsDirty } = useDirty(); // <-- Use context
 
   useEffect(() => {
     const fetchIntendedLearners = async () => {
@@ -30,12 +31,11 @@ export default function IntendedLearners({ setStepStatus, setIsDataSaved }: Prop
         if (!response.ok) {
           console.warn("No existing intended learners found");
           setIsDataLoaded(false);
+          setIsDirty(false); // Mark as clean on initial load
           return;
         }
 
         const data = await response.json();
-        console.log("Fetched Data:", data);
-
         if (data) {
           setLearningObjectives(
             data.learningObjectives.length ? data.learningObjectives : ["", "", "", ""]
@@ -43,24 +43,21 @@ export default function IntendedLearners({ setStepStatus, setIsDataSaved }: Prop
           setRequirements(data.requirements.length ? data.requirements : [""]);
           setAudience(data.audience.length ? data.audience : [""]);
           setIsDataLoaded(true);
-          setIsDataSavedLocal(true);
+          setIsDirty(false); // Mark as clean after data load
           setStepStatus?.((prev) => ({ ...prev, intended: true }));
         }
       } catch (error) {
+        setIsDirty(false); // Mark as clean on error
         console.error("Failed to fetch intended learners:", error);
       }
     };
 
     fetchIntendedLearners();
-  }, [packageId]);
-
-  useEffect(() => {
-    setIsDataSaved?.(isDataSavedLocal);
-  }, [isDataSavedLocal, setIsDataSaved]);
+  }, [packageId, setIsDirty, setStepStatus]);
 
   const addInput = (setter: React.Dispatch<React.SetStateAction<string[]>>) => {
     setter((prev) => [...prev, ""]);
-    setIsDataSavedLocal(false);
+    setIsDirty(true); // Mark as dirty on add
   };
 
   const handleChange = (
@@ -73,7 +70,7 @@ export default function IntendedLearners({ setStepStatus, setIsDataSaved }: Prop
       updated[index] = value;
       return updated;
     });
-    setIsDataSavedLocal(false);
+    setIsDirty(true); // Mark as dirty on change
   };
 
   const hasEmptyField = (arr: string[]) => arr.some((val) => val.trim() === "");
@@ -114,7 +111,6 @@ export default function IntendedLearners({ setStepStatus, setIsDataSaved }: Prop
       requirements,
       audience,
     };
-    console.log("form", formData);
 
     try {
       const response = await fetch(
@@ -134,8 +130,7 @@ export default function IntendedLearners({ setStepStatus, setIsDataSaved }: Prop
       }
 
       alert("Data saved successfully!");
-      console.log("Saved Data:", await response.json());
-      setIsDataSavedLocal(true);
+      setIsDirty(false); // Mark as clean after save
       router.push(`/teaching-page/package-page/${packageId}/course-landing-page`);
       setStepStatus?.((prev) => ({ ...prev, intended: true }));
     } catch (error: any) {
@@ -144,13 +139,12 @@ export default function IntendedLearners({ setStepStatus, setIsDataSaved }: Prop
     }
   };
 
-
   return (
     <div className="component-container">
       <div className="flex justify-between items-center">
         <h2>Intended learners</h2>
         <button className="upload-button" onClick={handleSave}>
-          {isDataLoaded ? "Update" : "Save"} {/* Change button text based on data availability */}
+          {isDataLoaded ? "Update" : "Save"}
         </button>
       </div>
       <hr />
