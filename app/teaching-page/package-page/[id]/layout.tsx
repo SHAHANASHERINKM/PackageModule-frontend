@@ -32,6 +32,7 @@ function PackageLayoutInner({
   const [userId, setUserId] = useState<number | null>(null);
 
   const { isDirty } = useDirty(); // <-- Use context
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
 
   // Fetch userId from sessionStorage once on component mount
   useEffect(() => {
@@ -160,6 +161,47 @@ function PackageLayoutInner({
           alert("User ID missing");
         }
       }
+    } catch (error) {
+      alert("An error occurred while fetching package details.");
+      console.error(error);
+    }
+  };
+
+  const handlePreview = async () => {
+    if (!id) {
+      alert("Package ID is missing.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/package/${id}/package`);
+      if (!res.ok) {
+        alert("Failed to fetch package details.");
+        return;
+      }
+      const data = await res.json();
+
+      const missingIntendedLearners =
+        !data.intendedLearners ||
+        data.intendedLearners.length === 0 ||
+        data.intendedLearners.some((il: any) => !il.id);
+      const missingCourseLandingPage =
+        !data.courseLandingPage || !data.courseLandingPage.id;
+      const missingSuccessMessage =
+        !data.successMessage || !data.successMessage.id;
+
+      if (
+        missingIntendedLearners ||
+        missingCourseLandingPage ||
+        missingSuccessMessage
+      ) {
+        alert(
+          "You haven't completed the process. Please fill in all required sections to see preview."
+        );
+        return;
+      }
+
+      setShowPreviewModal(true); // Show the modal instead of routing
     } catch (error) {
       alert("An error occurred while fetching package details.");
       console.error(error);
@@ -309,19 +351,84 @@ function PackageLayoutInner({
           </div>
 
           {/* Finish button */}
-          <div className="finish-button-wrapper" style={{ padding: "1rem" }}>
-            <button
-              onClick={handleFinish}
-              style={{ backgroundColor: '#800080' }}
-              className="bg-purple-900 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded w-full"
-            >
-              Finish
-            </button>
+          <div style={{ padding: "1rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <button
+                onClick={handleFinish}
+                style={{ backgroundColor: '#800080' }}
+                className="bg-purple-900 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded w-full"
+              >
+                Finish
+              </button>
+              <button
+                onClick={handlePreview}
+                style={{ backgroundColor: '#800080' }}
+                className="bg-purple-900 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded w-full"
+              >
+                See Preview
+              </button>
+            </div>
           </div>
         </aside>
 
         <main className="main-content">{children}</main>
       </div>
+
+      {/* Preview Modal */}
+      {showPreviewModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: "rgba(0,0,0,0.5)",
+            zIndex: 1000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "8px",
+              maxWidth: "98vw", // Increased width
+              maxHeight: "98vh", // Increased height
+              width: "1800px",   // Increased width
+              height: "95vh",    // Increased height
+              position: "relative",
+              boxShadow: "0 2px 16px rgba(0,0,0,0.2)",
+              overflow: "hidden"
+            }}
+          >
+            <button
+              onClick={() => setShowPreviewModal(false)}
+              style={{
+                position: "absolute",
+                top: 10,
+                right: 10,
+                background: "#800080",
+                color: "#fff",
+                border: "none",
+                borderRadius: "4px",
+                padding: "6px 14px",
+                cursor: "pointer",
+                zIndex: 10
+              }}
+            >
+              Close
+            </button>
+            <iframe
+              src={`/teaching-page/preview/${id}`}
+              title="Package Preview"
+              style={{
+                width: "100%",
+                height: "100%",
+                border: "none"
+              }}
+            />
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>

@@ -1,0 +1,306 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.overview-page-wrapper {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;            /* Instead of 100vw */
+  max-width: 100%;        /* Limit max-width to avoid overflow */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  gap: 0;
+  
+  overflow-x: hidden;     /* hide horizontal scroll */
+}
+.padded-content{
+  padding-left: 125px;
+}
+/* Left container takes 60%, fills width, no overflow */
+.left-section{
+  width: 70%;
+  
+ 
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 0;        /* important to prevent overflow */
+  overflow-wrap: break-word;
+}
+
+/* Padding for content inside left container */
+.left-dark-container{
+  width: 100%;
+  padding-left: 125px;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  background-color: black;
+  box-sizing: border-box;
+height: 550px;
+  min-width: 0;        /* prevent overflow of inner content */
+  overflow-wrap: break-word;
+}
+
+/* Right container takes 40% 
+.right-section {
+  width: 30%;
+  background: rgb(129, 125, 125);
+  color: black;
+  border-radius: 8px;
+  position: sticky;
+  top: 80px; 
+  height: fit-content;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: break-word;
+  align-self: flex-start;
+}
+*/
+
+.right-section {
+ 
+  
+  color: black;
+  border-radius: 8px;
+  position: fixed;
+  top: 98px; 
+  height: fit-content;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: break-word;
+  z-index: 1;
+  
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+/* Other styles as is */
+.breadcrumb {
+  color: #d4d4f4;
+  margin-bottom: 1rem;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-family: ui-rounded;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.overview-subtitle {
+  font-size: 30px;
+  font-weight: 400;
+  color: #d4d4f4;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  white-space: pre-wrap;
+}
+
+.author {
+  font-size: 25px;
+  color: #d4d4f4;
+  margin-bottom: 1rem;
+}
+
+.infoLine {
+  font-size: 25px;
+  color: #d4d4f4;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+.learning-objectives-box {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  max-width: 85%;
+  
+}
+
+.learning-objectives-box h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.learning-objectives-list {
+  display: flex;
+  flex-wrap: wrap;
+  color: black;
+  gap: 1rem;
+}
+
+.learning-objective {
+  flex: 1 1 45%;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.checkmark {
+  color: black;
+  margin-right: 0.6rem;
+  font-weight: 700;
+  fill:black;
+}
+.requirements-section {
+  margin-top: 2rem;
+  
+}
+.learners-section{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.requirements-heading,.learners-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color:black;
+  margin-bottom: 1rem;
+}
+
+.requirements-list ,.learners-list {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.requirement-item ,.learners-item {
+  font-size: 1.3rem;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+.description  {
+  margin-top: 2rem;
+
+  
+}
+
+.description-heading {
+  color: black;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.description-content{
+  font-size: 1.3rem;
+  color: black;
+   line-height: 2;
+}
+
+.description-content h1, 
+.description-content h2, 
+.description-content h3, 
+.description-content h4, 
+.description-content h5, 
+.description-content h6 {
+    font-weight: bold;
+    margin: 1em 0 0.5em;
+}
+
+.description-content p {
+    margin: 1em 0;
+}
+
+.description-content ul {
+    list-style: disc; /* Use bullets for unordered lists */
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.description-content ol {
+    list-style: decimal; /* Use numbers for ordered lists */
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.description-content table {
+    width: 100%; /* Ensures it takes up the full width of the container */
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+.description-content table th,
+.description-content table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.description-content table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+
+.description-content blockquote {
+    margin: 1em 0;
+    padding: 10px 20px;
+    border-left: 4px solid #ccc;
+    background-color: #f9f9f9;
+    font-style: italic;
+}
+
+.description-content pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.description-content code {
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+.description-content.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* limits to 5 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.description-content.expanded {
+  display: block;
+}
+
+.toggle-button {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color:#5b21b6;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.3em;
+  font-weight: 700;
+}
+.toggle-button:hover{
+  background-color: rgb(222, 181, 222);
+}

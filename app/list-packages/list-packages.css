@@ -1,0 +1,54 @@
+/* PackageList.module.css */
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  margin-top: 1rem;
+}
+
+.theadRow {
+  border-bottom: 2px solid #0070f3;
+  background-color: #f0f8ff;
+}
+
+.th,
+.td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.trRow {
+  border-bottom: 1px solid #ddd;
+}
+
+.trRow:hover {
+  background-color: #f9f9f9;
+}
+
+.actions button {
+  background-color: purple;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  margin-right: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.actions button:last-child {
+  margin-right: 0;
+}
+
+.actions button:hover {
+  background-color:rgb(176, 3, 176);
+}
+
+.noPackages {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}

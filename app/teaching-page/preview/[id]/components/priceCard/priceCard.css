@@ -1,0 +1,211 @@
+.styled-price-card {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0;
+  font-family: sans-serif;
+  height: auto;         /* Allow height to expand based on content */
+  overflow: hidden; 
+   
+}
+
+.thumbnail-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.thumbnail-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.overlay-play {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.details-section{
+  padding-left: 15px;
+}
+
+.info-note {
+  padding: 10px 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #555;
+}
+
+.price-info-block {
+  padding: 0 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.course-price-line {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #1d3557;
+  padding-bottom: 12px;
+}
+
+.discounted-price {
+  color:black;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 20px;
+  font-weight: bold;
+}
+.course-price{
+  color:black;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.discount-info {
+  color:green;
+  font-size: 0.95rem;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.limited-time {
+  
+  color: #b30000;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.no_of_seats{
+  background: #ffeded;
+  color: #d12f2f;
+  padding-top: 4px ;
+  padding-bottom: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  
+  align-items: center;
+  gap: 4px;
+}
+.seats {
+  font-size: 1.2rem;
+  color: #686f73;
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+}
+
+.add-to-cart {
+  flex: 1;
+  background: #9333ea;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.wishlist {
+  width: 40px;
+  height: 40px;
+  background: white;
+  color: #9333ea;
+  font-size: 20px;
+  border: 2px solid #9333ea;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wishlist-icon {
+  transition: color 0.3s ease;
+  color: #9333ea;
+}
+
+.wishlist-icon.active {
+  color:  #9333ea;
+}
+
+
+.buy-now {
+  margin: 0 16px 16px;
+  width: calc(100% - 32px);
+  background: #e0e7ff;
+  color: #111;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.video-modal-overlay {
+  position: fixed;
+  top: 35;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(53, 51, 51, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.video-modal-content {
+  padding: 40px;
+    padding-top: 70px;
+    align-items: center;
+    position: relative;
+    width: 90%;
+    height: 750px;
+    max-width: 1000px;
+    background: #1a1919;
+   
+    box-shadow: 0 0 20px #0006;
+}
+
+.promo-video {
+  width: 100%;
+  height: auto;
+ 
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color:white;
+}
+.modal-heading {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.wishlist.wishlisted {
+  color: purple;
+}
