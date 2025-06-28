@@ -127,8 +127,8 @@ export default function WishlistPage() {
                     <Link href="#" className="cart-action-link" onClick={() => handleRemove(package_id)}>
                       Remove from Wishlist
                     </Link>
-                    <Link href={`/buy/${package_id}`} className="cart-action-link">
-                      Buy Now
+                    <Link href={`/packageOverview/${package_id}`} className="cart-action-link">
+                      More Details
                     </Link>
                   </div>
                 </li>

@@ -22,7 +22,7 @@ export default function Navbar() {
   const [showWishlist, setShowWishlist] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showYourLearning, setShowYourLearning] = useState(false);
-const router = useRouter();
+  const router = useRouter();
   const cartRef = useRef<HTMLDivElement>(null);
   const wishlistRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
@@ -131,12 +131,12 @@ const router = useRouter();
           </button>
           {isMenuOpen && (
             <div className="absolute left-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-10">
-             <button onClick={() => userId && router.push(`/wishlist/${userId}`)} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Wishlist</button>
-<button onClick={() => userId && router.push(`/cart/${userId}`)} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cart</button>
-<button onClick={() => userId && router.push(`/your-courses/${userId}`)} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Courses</button>
-<button onClick={() => userId && router.push(`/learnings/${userId}`)} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Learnings</button>
- 
-    </div>
+              <button onClick={() => userId && router.push(`/wishlist/${userId}`)} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Wishlist</button>
+              <button onClick={() => userId && router.push(`/cart/${userId}`)} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cart</button>
+              <button onClick={() => userId && router.push(`/your-courses/${userId}`)} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Courses</button>
+              <button onClick={() => userId && router.push(`/learnings/${userId}`)} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Learnings</button>
+
+            </div>
           )}
         </div>
 
@@ -147,28 +147,37 @@ const router = useRouter();
 
         {/* Right Icons */}
         <div className="hidden md:flex items-center space-x-7 mr-8 text-gray-600 relative">
+          <div className="relative" >
+             <button
+              onClick={() => router.push(`/main-page/${userId}`)}
+              className="text-xl font-medium hover:underline hover:text-purple-600"
+            >
+              Home
+            </button>
+            </div>
 
+          <div className="relative" >
+           
 
- <div className="relative" >
-  <button
-    onClick={() =>  router.push(`/teaching-page/start-page`)}
-    className="text-xl font-medium hover:underline hover:text-purple-600"
-  >
-    Start Teaching
-  </button>
-  
-</div>
+            <button
+              onClick={() => router.push(`/teaching-page/start-page`)}
+              className="text-xl font-medium hover:underline hover:text-purple-600"
+            >
+              Start Teaching
+            </button>
+
+          </div>
 
 
           <div className="relative" ref={learningRef}>
-  <button
-    onClick={handleYourLearningClick}
-    className="text-xl font-medium hover:underline hover:text-purple-600"
-  >
-    Your Learnings
-  </button>
-  {showYourLearning && userId && <YourLearning userId={userId} />}
-</div>
+            <button
+              onClick={handleYourLearningClick}
+              className="text-xl font-medium hover:underline hover:text-purple-600"
+            >
+              Your Learnings
+            </button>
+            {showYourLearning && userId && <YourLearning userId={userId} />}
+          </div>
 
 
           <div className="relative" ref={wishlistRef}>
@@ -203,20 +212,22 @@ const router = useRouter();
               <div className="absolute right-0 mt-2 w-70 bg-white rounded-md shadow-xl z-20 py-4 px-4 text-gray-700">
                 <p className="font-semibold text-xl">{name || 'User Name'}</p>
                 <hr className="border-gray-300 mb-3" />
-               <Link href={`/learnings/${userId}`} className="block px-2 py-2 hover:bg-gray-200 rounded-md">Your Learnings</Link>
-                
+                <Link href={`/main-page/${userId}`} className="block px-2 py-2 hover:bg-gray-200 rounded-md">Home</Link>
+
+                <Link href={`/learnings/${userId}`} className="block px-2 py-2 hover:bg-gray-200 rounded-md">Your Learnings</Link>
+
                 <Link href={`/cart/${userId}`} className="block px-2 py-2 hover:bg-gray-200 rounded-md">Cart</Link>
                 <Link href={`/wishlist/${userId}`} className="block px-2 py-2 hover:bg-gray-200 rounded-md"> Wishlist</Link>
                 <Link href={`/your-courses/${userId}`} className="block px-2 py-2 hover:bg-gray-200 rounded-md">Your Courses</Link>
-                 <Link href={`/teaching-page/start-page`} className="block px-2 py-2 hover:bg-gray-200 rounded-md">Start Teaching</Link>
-             
+                <Link href={`/teaching-page/start-page`} className="block px-2 py-2 hover:bg-gray-200 rounded-md">Start Teaching</Link>
+
               </div>
             )}
           </div>
         </div>
       </nav>
 
-      
+
     </>
   );
 }

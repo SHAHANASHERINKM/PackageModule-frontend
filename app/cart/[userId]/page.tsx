@@ -51,6 +51,9 @@ export default function CartPage() {
     fetchCartItems();
   }, [userId]);
 
+
+
+  
   // Handler to remove item from cart
   const handleRemove = async (packageId: number) => {
     if (!userId) return;
@@ -130,8 +133,8 @@ export default function CartPage() {
   <Link href="#" className="cart-action-link" onClick={() => handleRemove(package_id)}>
     Remove from Cart
   </Link>
-  <Link href={`/buy/${package_id}`} className="cart-action-link">
-    Buy Now
+  <Link href={`/packageOverview/${package_id}`} className="cart-action-link">
+    More details
   </Link>
 </div>
                 </li>
